@@ -2,6 +2,9 @@ body{
      margin: 0;
      padding: 0;
      font-family: sans-serif;
+     display: flex;
+     flex-direction: column;
+     gap: 30px;
 }
 
 header{
@@ -9,7 +12,8 @@ header{
      justify-content: space-between;
      align-items: center;
      padding: 0 60px;
-     background-color: #f2f2f2;
+     background-color: #0f2920;
+     color: #ffffffa3;
 }
 
 header nav{
@@ -20,29 +24,108 @@ header nav{
 
  a{
      text-decoration: none;
-     color: black;
+     color: #ffffffa3;
      font-size: 20px;
 }
-
-
 main{
-     height: 570px;
+     min-height: 600px;
+}
+
+#fieldset{
+     width: 80%;
+    margin: auto;
+    border: 5px solid #0f29208a;
+    border-radius: 15px;
+}
+
+form{
      display: flex;
      flex-direction: column;
-     justify-content: space-around;
+     gap: 20px;
+     padding: 20px;
 }
 
-.p{
-     padding: 15px 25px;
-     background-color: beige;
+input{
+     height: 25px;
+     padding: 5px;
+     text-align: center;
+     font-size: 16px;
+     text-transform: capitalize;
+     margin-left: 15px ;
 }
+
+select{
+     padding: 5px;
+     text-align: center;
+     font-size: 14px;
+     text-transform: capitalize;
+     margin-left: 15px ;
+}
+
+.select-dep,
+.levelContaner{
+     display: flex;
+     justify-content: space-around;
+     width: 250px;
+     align-items: center;
+}
+
+
+
+#btn{
+     width: 100px;
+     height: 35px;
+     border: none;
+     border-radius: 15px;
+     font-size: 16px;
+     cursor: pointer;
+     padding: 10px;
+     background-color: #0f2920;
+     color: #ffffffec;
+     
+
+
+}
+.cards1,.cards2,.cards3,.cards4{
+     width: 80%;
+     display: flex;
+     flex-wrap: wrap;
+     justify-content: flex-start ;
+     align-items: center;
+     margin: auto;
+     padding: 15px ;
+     display: none;
+}
+
+.card{
+     height: 350px;
+     width: 300px;
+     background-color: rgb(15, 41, 32);
+     display: flex;
+     flex-direction: column;
+     justify-content: center;
+     align-items: center;
+     color: #f2f2f2;
+     padding: 25px;
+     border-radius: 15px;
+     margin: 30px auto;
+}
+
+img{
+     width: 150px;
+     border-radius: 50%;
+          
+}
+
+
 
 footer{
      display: flex;
      align-items: center;
      flex-direction: column;
      justify-content: center;
-     background-color: #f2f2f2;
+     background-color: #0f2920;
+     color: #ffffffa3;
      padding: 10px 0;
 }
 

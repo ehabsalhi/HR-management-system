@@ -1,7 +1,6 @@
 "use strict";
 
-function Employee (id , fNme , department , level , img ){
-     this.id = id;
+function Employee ( fNme  , department , level , img ){
      this.name = fNme ;
      this.department = department;
      this.level = level ;
@@ -21,39 +20,83 @@ Employee.prototype.salaryCalc= function(){
      return  (this.salary * 92.5) / 100 
 }
 
-
-Employee.prototype.employeePara = function(){
-     return `Hello ${this.name} your Salary is ${this.salaryCalc()}`
+Employee.prototype.randomID = function (){
+     this.idNum = Math.round(Math.random() * (2000 - 1000) + 1000)
+     return this.idNum
 }
 
-
-
-
+let form = document.getElementById("form")  
 let main = document.getElementById("main")
+let cardContaner1 = document.createElement("div")
+let cardContaner2 = document.createElement("div")
+let cardContaner3 = document.createElement("div")
+let cardContaner4 = document.createElement("div")
 
-for( let i = 1 ; i <= 7 ; i++){
+cardContaner1.classList.add("cards1")
+cardContaner2.classList.add("cards2")
+cardContaner3.classList.add("cards3")
+cardContaner4.classList.add("cards4")
+
+
+main.append(cardContaner1)
+main.append(cardContaner2)
+main.append(cardContaner3)
+main.append(cardContaner4)
+
+
+function clicked (e){
+     e.preventDefault()
+     let fullName = e.target.fullName.value ;
+     let deparVAlue = e.target.Department.value;
+     let position = e.target.selectLevel.value;
+     let imgUrl = e.target.url.value; 
+
+     let userObj = new Employee(fullName , deparVAlue , position  , imgUrl)
+
+     let card = document.createElement("div")
+     card.classList.add("card")
+
+     if (deparVAlue === "Administration") {     
+          cardContaner1.append(card)
+          cardContaner1.style.borderBottom = "5px solid #0f29208a"
+          cardContaner1.style.display = "flex"
+     }else if( deparVAlue === "Marketing"){
+          cardContaner2.append(card)
+          cardContaner2.style.borderBottom = "5px solid #0f29208a"
+          cardContaner2.style.display = "flex"
+     }
+     else if( deparVAlue === "Development"){
+          cardContaner3.append(card)
+          cardContaner3.style.borderBottom = "5px solid #0f29208a"
+          cardContaner3.style.display = "flex"
+     }
+     else if( deparVAlue === "Finance"){
+          cardContaner4.append(card)
+          cardContaner4.style.borderBottom = "5px solid #0f29208a"
+          cardContaner4.style.display = "flex"
+     }
      
-     let para = document.createElement("p");
-     para.setAttribute("class" , `p`)
-     main.append(para)
 
+     // card info
+     
+     let img = document.createElement("img")
+     img.src = userObj.img
+     card.append(img)
+
+     let pName = document.createElement("p");
+     pName.textContent = `Name : ${userObj.name} -ID: ${userObj.randomID()}`
+     card.append(pName)
+
+     let pDepartment = document.createElement("p");
+     pDepartment.textContent = `Department : ${userObj.department} -Level: ${userObj.level}`
+     card.append(pDepartment)
+
+     let pSalary = document.createElement("p");
+     pSalary.textContent = `Salary : ${userObj.salaryCalc()}`
+     card.append(pSalary)
+     
 }
 
-let clss = document.querySelectorAll(".p")
 
 
-let user1 = new Employee(1000 ,'Ghazi Samer' , 'Administration' ,'Senior','url' ) 
-let user2 = new Employee(1001	,'Lana Ali','Finance','Senior','url' ) 
-let user3 = new Employee(1002	,'Tamara Ayoub	','Marketing','Senior','url' ) 
-let user4 = new Employee(1003	,'Safi Walid','Finance','Mid-Senior','url' ) 
-let user5 = new Employee(1004	,'Omar Zaid','Development','Senior','url' ) 
-let user6 = new Employee(1005	,'Rana Saleh','Finance','Junior','url' ) 
-let user7 = new Employee(1006	,'Hadi Ahmad','Development','Mid-Senior','url' ) 
-
-
-let arr = [user1 , user2, user3, user4, user5, user6, user7]
-for( let x = 0 ; x <= clss.length ; x++){
-     
-     clss[x].textContent = `${x + 1}. ${arr[x].employeePara()}`
-     
-}
+form.addEventListener("submit" , clicked)
