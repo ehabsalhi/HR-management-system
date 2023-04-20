@@ -1,11 +1,17 @@
 "use strict";
 
-function Employee ( fNme  , department , level , img ){
+function Employee ( fNme  , department , level , img , salary , id){
      this.name = fNme ;
      this.department = department;
      this.level = level ;
      this.img = img ;
+     this.salary = salary;
+     this.id = id;
 }
+
+Employee.emData = []
+let data = JSON.parse(localStorage.getItem("data")) ? JSON.parse(localStorage.getItem("data")) : []
+
 
 Employee.prototype.salaryCalc= function(){
      if(this.level === 'Senior'){
@@ -50,8 +56,10 @@ function clicked (e){
      let deparVAlue = e.target.Department.value;
      let position = e.target.selectLevel.value;
      let imgUrl = e.target.url.value; 
-
-     let userObj = new Employee(fullName , deparVAlue , position  , imgUrl)
+     
+     let userObj = new Employee(fullName , deparVAlue , position  , imgUrl, 0 , 0)
+     userObj.salary = userObj.salaryCalc()
+     userObj.id = userObj.randomID()
 
      let card = document.createElement("div")
      card.classList.add("card")
@@ -78,13 +86,12 @@ function clicked (e){
      
 
      // card info
-     
      let img = document.createElement("img")
      img.src = userObj.img
      card.append(img)
 
      let pName = document.createElement("p");
-     pName.textContent = `Name : ${userObj.name} -ID: ${userObj.randomID()}`
+     pName.textContent = `Name : ${userObj.name} -ID: ${userObj.id}`
      card.append(pName)
 
      let pDepartment = document.createElement("p");
@@ -92,10 +99,66 @@ function clicked (e){
      card.append(pDepartment)
 
      let pSalary = document.createElement("p");
-     pSalary.textContent = `Salary : ${userObj.salaryCalc()}`
+     pSalary.textContent = `Salary : ${userObj.salary}`
      card.append(pSalary)
-     
+
+     // save data to array
+     Employee.emData = data
+     Employee.emData.push(userObj)
+     let strData = JSON.stringify(Employee.emData)
+     localStorage.setItem("data" , strData)
 }
+
+// render old Data 
+
+for ( let i = 0 ; i < data.length ; i++){
+     let card = document.createElement("div")
+     card.classList.add("card")
+     
+     let img = document.createElement("img")
+     img.src = data[i].img
+     card.append(img)
+     
+     let pName = document.createElement("p");
+     pName.textContent = `Name : ${data[i].name} -ID: ${data[i].id}`
+     card.append(pName)
+     
+     let pDepartment = document.createElement("p");
+     pDepartment.textContent = `Department : ${data[i].department} -Level: ${data[i].level}`
+     card.append(pDepartment)
+     
+     let pSalary = document.createElement("p");
+     pSalary.textContent = `Salary : ${data[i].salary}`
+     card.append(pSalary)
+
+     if (data[i].department === "Administration") {     
+          cardContaner1.appendChild(card)
+          cardContaner1.style.display = "flex"
+          cardContaner1.style.borderBottom = "5px solid #0f29208a"
+     }else if(data[i].department === "Marketing"){
+          cardContaner2.append(card)
+          cardContaner2.style.borderBottom = "5px solid #0f29208a"
+          cardContaner2.style.display = "flex"
+     }
+     else if( data[i].department === "Development"){
+          cardContaner3.append(card)
+          cardContaner3.style.borderBottom = "5px solid #0f29208a"
+          cardContaner3.style.display = "flex"
+     }
+     else if( data[i].department === "Finance"){
+          cardContaner4.append(card)
+          cardContaner4.style.borderBottom = "5px solid #0f29208a"
+          cardContaner4.style.display = "flex"
+     }
+
+}     
+
+
+
+
+
+
+
 
 
 
