@@ -28,7 +28,7 @@ header nav{
      font-size: 20px;
 }
 main{
-     min-height: 600px;
+     min-height: 500px;
 }
 
 #fieldset{
@@ -131,4 +131,24 @@ footer{
 
 footer a{
      padding-left: 20px;
+}
+
+/* table style */
+
+table{
+     border: 3px solid #0f292074;
+     text-align: center;
+     height: 350px;
+     width: 800px;
+}
+
+.table{
+     padding-top: 30px;
+     display: flex;
+     justify-content: center;
+}
+table  th,
+table td
+{
+     border: 2px solid #22222259;
 }

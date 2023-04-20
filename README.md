@@ -1,4 +1,4 @@
-# HR-management-system
+> # HR-management-system
 
 > ## lab 08
 > - I have created a **Form** with the following feilds :
@@ -20,3 +20,11 @@
 > - also I coordinated the site with **Css** as required of me .
 > - I separated the employees cards by their department .
 
+> ## lab 09 
+> - ##### At the home page i Saved all Data in the Local Storage so when the page refresh it will not lose my old data.
+> - ##### I buted each department information in a table:
+     > - Department Name
+     > - Number of employees in each department.
+     > - Average salary of the department
+     > - Total salary of the department
+> - ##### I created a table footer which have the total number of employees, the average salary for all departments and the total salary for all departments.
