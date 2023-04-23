@@ -22,7 +22,7 @@
 
 > ## lab 09 
 > - ##### At the home page i Saved all Data in the Local Storage so when the page refresh it will not lose my old data.
-> - ##### I buted each department information in a table:
+> - ##### At the accounting page I buted each department information in a table:
      > - Department Name
      > - Number of employees in each department.
      > - Average salary of the department
